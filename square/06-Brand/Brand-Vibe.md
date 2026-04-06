@@ -1,4 +1,4 @@
----
+﻿---
 title: Brand Vibe
 date: 2026-04-06
 tags:
@@ -40,3 +40,4 @@ tags:
 ## See Also
 
 - [[Trend-Scout-Brief]] — 브랜드에 영향을 줄 외부 신호 (07-Research)
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: Operating Rhythm
 date: 2026-04-06
 tags:
@@ -47,3 +47,4 @@ tags:
 ## See Also
 
 - [[Implementation-Plan]] — 운영을 제품 기능으로 반영하는 방법 (09-Implementation)
+

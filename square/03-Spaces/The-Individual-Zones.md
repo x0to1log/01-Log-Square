@@ -1,4 +1,4 @@
----
+﻿---
 title: The Individual Zones
 date: 2026-04-06
 tags:
@@ -22,7 +22,7 @@ tags:
 
 - 각 방은 하나의 DM 스레드와 대응한다.
 - 개별 대화는 프로젝트 맥락 밖으로 흩어지지 않는다.
-- 중요한 내용은 다시 [[The-Boardroom|The War Room]]으로 가져올 수 있어야 한다.
+- 중요한 내용은 다시 [[The-Meeting-Room|The Meeting Room]]으로 가져올 수 있어야 한다.
 - DM에서 나온 결과는 `결정 후보`, `리스크`, `액션 아이템`으로 승격 가능해야 한다.
 
 ## 시각 방향
@@ -34,9 +34,10 @@ tags:
 ## Related
 
 - [[Agent-Team]] — 각 방의 주인
-- [[The-Boardroom|The War Room]] — 개별 검토 후 합의 공간
+- [[The-Meeting-Room|The Meeting Room]] — 개별 검토 후 합의 공간
 - [[The-Project-Rooms]] — 프로젝트 전체 shell
 
 ## See Also
 
 - [[Hybrid-Floorplan-Workspace]] — 전체 UX 설계 (08-Design)
+

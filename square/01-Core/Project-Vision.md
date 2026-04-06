@@ -1,4 +1,4 @@
----
+﻿---
 title: Project Vision
 date: 2026-04-06
 tags:
@@ -106,3 +106,4 @@ tags:
 
 - [[Space-Map]] — 오피스 공간 구조 (03-Spaces)
 - [[Implementation-Plan]] — 구현 관점 정리 (09-Implementation)
+

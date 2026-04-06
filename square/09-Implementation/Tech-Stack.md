@@ -1,4 +1,4 @@
----
+﻿---
 title: Tech Stack
 date: 2026-04-06
 updated: 2026-04-06
@@ -18,7 +18,7 @@ tags:
 
 | 영역 | 선택 | 역할 |
 |------|------|------|
-| Frontend | Next.js + TypeScript | 프로젝트 목록, War Room, DM, Map, 대표 UI |
+| Frontend | Next.js + TypeScript | 프로젝트 목록, Meeting Room, DM, Map, 대표 UI |
 | UI System | Tailwind CSS | 반응형 웹 UI, 오피스형 인터페이스 레이아웃 |
 | Motion | CSS/Framer Motion 최소 사용 | 상태 전환, 맵 전환, 작은 상호작용 |
 | Database/Auth/Realtime | Supabase | 인증, Postgres, Realtime, Storage |
@@ -34,7 +34,7 @@ tags:
 
 - v1은 웹 앱으로 만든다.
 - 데스크톱 브라우저 사용성을 우선한다.
-- 프로젝트 목록, War Room, DM, 운영 패널은 웹에서 완성한다.
+- 프로젝트 목록, Meeting Room, DM, 운영 패널은 웹에서 완성한다.
 
 ### 모바일은 반응형/컴패니언 우선
 
@@ -67,7 +67,7 @@ tags:
 - 화면 렌더링
 - 사용자 상호작용
 - 프로젝트/스레드 탐색 UI
-- War Room, DM, Map 전환
+- Meeting Room, DM, Map 전환
 - 대표 승인 UI
 - Mastra 에이전트 호출 (API Routes / Server Actions)
 - 에이전트 응답에서 구조화 결과 추출 → Supabase 저장
@@ -84,7 +84,7 @@ tags:
 
 ### Mastra가 맡는 일
 
-- 에이전트 오케스트레이션 (Supervisor 패턴으로 War Room 멀티에이전트)
+- 에이전트 오케스트레이션 (Supervisor 패턴으로 Meeting Room 멀티에이전트)
 - LLM 프롬프트 조합 및 호출
 - Zod 스키마 기반 구조화 출력 (decisions, actions, reviews 추출)
 - 에이전트별 메모리 관리 (message history, working memory, semantic recall)
@@ -133,7 +133,7 @@ OpenClaw를 에이전트 런타임으로 검토했으나, v1 핵심 스택에서
 
 ## 이번 결정의 의미
 
-이 스택 선택은 `빠르게 검증 가능한 제품 뼈대`를 우선 확보하기 위한 것이다. TypeScript 단일 스택으로 통일하고, Mastra를 에이전트 런타임으로 채택함으로써 별도 서버 프로세스 없이 Next.js 안에서 전체 앱이 동작하는 구조를 만든다. 구조화 출력과 멀티에이전트 Supervisor 패턴이 네이티브로 지원되므로, War Room과 DM의 핵심 시나리오를 프레임워크 수준에서 해결할 수 있다.
+이 스택 선택은 `빠르게 검증 가능한 제품 뼈대`를 우선 확보하기 위한 것이다. TypeScript 단일 스택으로 통일하고, Mastra를 에이전트 런타임으로 채택함으로써 별도 서버 프로세스 없이 Next.js 안에서 전체 앱이 동작하는 구조를 만든다. 구조화 출력과 멀티에이전트 Supervisor 패턴이 네이티브로 지원되므로, Meeting Room과 DM의 핵심 시나리오를 프레임워크 수준에서 해결할 수 있다.
 
 ## Related
 
@@ -146,3 +146,4 @@ OpenClaw를 에이전트 런타임으로 검토했으나, v1 핵심 스택에서
 
 - [[Agent-Team]] — 시스템이 다뤄야 할 행위자 (02-Organization)
 - [[Mobile-Companion-Layout]] — 모바일 범위 (08-Design)
+

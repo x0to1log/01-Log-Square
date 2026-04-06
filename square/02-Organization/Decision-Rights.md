@@ -1,4 +1,4 @@
----
+﻿---
 title: Decision Rights
 date: 2026-04-06
 tags:
@@ -79,3 +79,4 @@ tags:
 
 - [[Implementation-Plan]] — 시스템 설계에 반영할 운영 규칙 (09-Implementation)
 - [[QUICK-DECISIONS]] — 실제 결정 기록 (10-Journal)
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: Database Schema
 date: 2026-04-06
 updated: 2026-04-06
@@ -110,7 +110,7 @@ Reviews can target exactly one object:
 `bootstrap_project(bigint)` is included so the app can provision:
 
 - default project-scoped agent instances
-- the project War Room
+- the project Meeting Room
 - core memberships
 - direct-message threads for project agents
 
@@ -139,3 +139,4 @@ These additions follow the core principle: **Supabase is the product's source of
 - [[Tech-Stack]]
 - [[Implementation-Plan]]
 - [[Agent-Team]]
+

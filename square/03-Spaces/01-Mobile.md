@@ -1,4 +1,4 @@
----
+﻿---
 title: 01-Mobile
 date: 2026-04-06
 tags:
@@ -13,7 +13,7 @@ tags:
 
 ## 역할
 
-- War Room 빠른 확인
+- Meeting Room 빠른 확인
 - 에이전트 DM 짧은 답장
 - 승인 / 보류
 - 긴급 호출
@@ -39,3 +39,4 @@ tags:
 ## See Also
 
 - [[Hybrid-Floorplan-Workspace]] — 전체 구조 (08-Design)
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: Mobile Companion Layout
 date: 2026-04-06
 tags:
@@ -52,11 +52,11 @@ tags:
 - 열린 액션 수
 - 최근 활동
 
-프로젝트를 누르면 기본으로 War Room 모바일 뷰가 열린다.
+프로젝트를 누르면 기본으로 Meeting Room 모바일 뷰가 열린다.
 
 ### Chats
 
-- War Room
+- Meeting Room
 - 에이전트 DM
 - unread, flagged, awaiting decision 상태
 
@@ -68,7 +68,7 @@ tags:
 
 ## 프로젝트 진입 후
 
-### 기본 화면: War Room Mobile
+### 기본 화면: Meeting Room Mobile
 
 #### 상단
 
@@ -96,7 +96,7 @@ tags:
 
 - 에이전트 이름
 - 역할
-- `Send to War Room`
+- `Send to Meeting Room`
 
 ### 본문
 
@@ -143,7 +143,7 @@ tags:
 
 - 빠른 읽기
 - 승인이 명확한 UI
-- War Room 진입
+- Meeting Room 진입
 - DM 응답
 - Map 호출
 
@@ -170,9 +170,10 @@ tags:
 
 - [[01-Mobile]] — 공간 개념
 - [[Project-Workspace-Layout]] — 웹과의 관계
-- [[War-Room-Layout]] — 기본 진입 화면
+- [[Meeting-Room-Layout]] — 기본 진입 화면
 
 ## See Also
 
 - [[Pixel-Accent-System]] — 모바일 픽셀 사용 기준
 - [[Representative-Role]] — 대표 중심 사용 원칙 (01-Core)
+

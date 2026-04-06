@@ -1,4 +1,4 @@
----
+﻿---
 title: square vault kickoff
 date: 2026-04-06
 tags:
@@ -24,3 +24,4 @@ tags:
 ## See Also
 
 - [[Project-Portfolio]] — 이후 프로젝트 정리 위치 (04-Projects)
+

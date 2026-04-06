@@ -1,4 +1,4 @@
----
+﻿---
 title: square vault bootstrap
 date: 2026-04-06
 tags:
@@ -47,3 +47,4 @@ tags:
 ## See Also
 
 - [[SQUARE_RULES]] — 문서 운영 규칙
+

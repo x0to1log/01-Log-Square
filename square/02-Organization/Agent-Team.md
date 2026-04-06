@@ -1,4 +1,4 @@
----
+﻿---
 title: Agent Team
 date: 2026-04-06
 tags:
@@ -98,7 +98,7 @@ aliases:
 
 ## 운영 원칙
 
-- Strategic Core와 Review Core가 War Room의 중심이다.
+- Strategic Core와 Review Core가 Meeting Room의 중심이다.
 - Documentation Manager는 공식 기록을 남기는 단일 진실 원천 역할을 한다.
 - Builder는 논의가 실제 산출물로 전환될 때 호출된다.
 - Specialist는 호출형으로만 참여한다.
@@ -114,3 +114,4 @@ aliases:
 
 - [[Representative-Role]] — 대표의 위치 (01-Core)
 - [[Operating-Rhythm]] — 운영 주기 (05-Operations)
+

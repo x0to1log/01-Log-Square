@@ -1,4 +1,4 @@
----
+﻿---
 title: Project Workspace Layout
 date: 2026-04-06
 tags:
@@ -21,7 +21,7 @@ tags:
 이 화면은 다음 조건을 동시에 만족해야 한다.
 
 - 프로젝트 단위로 모든 맥락이 묶인다.
-- 기본 진입은 [[The-Boardroom|The War Room]]이다.
+- 기본 진입은 [[The-Meeting-Room|The Meeting Room]]이다.
 - 각 에이전트 DM으로 빠르게 이동할 수 있다.
 - 대화와 별개로 `결정 / 리스크 / 다음 액션 / 관련 문서`가 항상 보인다.
 - `Map` 전용 보기로 floorplan 감각을 언제든 불러올 수 있다.
@@ -30,7 +30,7 @@ tags:
 
 - `프로젝트`가 최상위 컨테이너다.
 - `스레드`는 프로젝트 안에 속한다.
-- `War Room`은 기본 앵커 스레드다.
+- `Meeting Room`은 기본 앵커 스레드다.
 - `Individual Zones`는 프로젝트 내부의 1:1 DM 스레드다.
 - 오른쪽 패널은 채팅 요약이 아니라 `구조화된 운영 상태`다.
 
@@ -66,7 +66,7 @@ tags:
 ### 목적
 
 - 현재 프로젝트 안의 모든 대화 채널을 빠르게 오간다.
-- War Room이 항상 최상단 앵커로 보인다.
+- Meeting Room이 항상 최상단 앵커로 보인다.
 - 읽지 않은 메시지, red flag, summary ready 같은 상태를 즉시 읽는다.
 
 ### 구성
@@ -79,7 +79,7 @@ tags:
   - `Specialist`
   - `Needs attention`
 - 스레드 섹션
-  - `War Room`
+  - `Meeting Room`
   - `Core Agents`
   - `Specialists`
   - `Recent Notes`
@@ -116,7 +116,7 @@ tags:
 - `Promote to Decision`
 - `Convert to Action`
 - `Pin to Brief`
-- `Send to War Room`
+- `Send to Meeting Room`
 
 ## 오른쪽 패널 상세
 
@@ -155,7 +155,7 @@ tags:
 ### 맵에서 보이는 요소
 
 - 대표 캐릭터
-- War Room
+- Meeting Room
 - Individual Zones
 - Archive
 - Radar
@@ -174,11 +174,11 @@ tags:
 ### Empty
 
 - 프로젝트는 생성됐지만 대화가 없는 상태
-- War Room에 첫 질문을 던지는 CTA 필요
+- Meeting Room에 첫 질문을 던지는 CTA 필요
 
 ### Active
 
-- War Room 논의 중
+- Meeting Room 논의 중
 - 열린 리스크와 액션이 보임
 
 ### Escalated
@@ -193,7 +193,7 @@ tags:
 
 ## 안티패턴
 
-- DM과 War Room이 완전히 분리되어 다시 연결되지 않는 구조
+- DM과 Meeting Room이 완전히 분리되어 다시 연결되지 않는 구조
 - 오른쪽 패널이 접히거나 숨겨져 중요도가 사라지는 구조
 - 맵이 늘 떠 있어서 실제 대화 공간을 압박하는 구조
 - 스레드 목록에 상태 정보가 없어 모든 방이 평평하게 보이는 구조
@@ -201,10 +201,11 @@ tags:
 ## Related
 
 - [[Hybrid-Floorplan-Workspace]] — 상위 방향
-- [[War-Room-Layout]] — 기본 진입 화면 상세
+- [[Meeting-Room-Layout]] — 기본 진입 화면 상세
 - [[Individual-Zones-Layout]] — DM 화면 상세
 
 ## See Also
 
 - [[Mobile-Companion-Layout]] — 모바일 구조
 - [[Pixel-Accent-System]] — 픽셀 사용 규칙
+

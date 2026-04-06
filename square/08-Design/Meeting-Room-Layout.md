@@ -1,14 +1,14 @@
----
-title: War Room Layout
+﻿---
+title: Meeting Room Layout
 date: 2026-04-06
 tags:
   - design
   - ux
-  - war-room
+  - meeting-room
   - layout
 ---
 
-# War Room Layout
+# Meeting Room Layout
 
 > 프로젝트에 들어갔을 때 기본으로 열리는 핵심 회의 화면. 그룹 채팅처럼 보이지만, 실제로는 `결론을 만드는 프로젝트 지휘실`이다.
 
@@ -23,9 +23,9 @@ tags:
 
 ## 데스크톱 화면 해부
 
-### 1. War Room Header
+### 1. Meeting Room Header
 
-- 방 이름: `The War Room`
+- 방 이름: `The Meeting Room`
 - 참여 에이전트 아바타
 - 회의 목적 한 줄
 - `Call Specialist`
@@ -65,7 +65,7 @@ tags:
 
 ### 4. 우측 운영 패널
 
-War Room에서 가장 중요한 영역 중 하나다.
+Meeting Room에서 가장 중요한 영역 중 하나다.
 
 #### Current Decision
 
@@ -96,11 +96,11 @@ War Room에서 가장 중요한 영역 중 하나다.
 ## 행동 흐름
 
 1. 대표가 프로젝트에 들어온다.
-2. War Room이 열린다.
+2. Meeting Room이 열린다.
 3. 우측 패널에서 현재 상태를 빠르게 읽는다.
 4. 가운데 대화를 읽고 직접 질문하거나 지시한다.
 5. 특정 이슈는 개별 DM으로 내려간다.
-6. 결과는 다시 War Room로 돌아와 정리된다.
+6. 결과는 다시 Meeting Room로 돌아와 정리된다.
 7. COO가 액션을 낭독하고, 대표가 최종 승인한다.
 
 ## 대화 규칙
@@ -150,10 +150,11 @@ War Room에서 가장 중요한 영역 중 하나다.
 ## Related
 
 - [[Project-Workspace-Layout]] — 상위 shell
-- [[The-Boardroom|The War Room]] — 공간 개념
+- [[The-Meeting-Room|The Meeting Room]] — 공간 개념
 - [[Meeting-Flow]] — 회의 순서
 
 ## See Also
 
 - [[Individual-Zones-Layout]] — 개별 논의 공간
 - [[Mobile-Companion-Layout]] — 모바일 접근 방식
+

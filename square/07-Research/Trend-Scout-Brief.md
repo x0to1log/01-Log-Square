@@ -1,4 +1,4 @@
----
+﻿---
 title: Trend Scout Brief
 date: 2026-04-06
 tags:
@@ -34,3 +34,4 @@ tags:
 ## See Also
 
 - [[Roadmap]] — 어떤 단계에 반영할지 (01-Core)
+

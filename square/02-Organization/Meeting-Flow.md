@@ -1,4 +1,4 @@
----
+﻿---
 title: Meeting Flow
 date: 2026-04-06
 tags:
@@ -52,5 +52,6 @@ tags:
 
 ## See Also
 
-- [[The-Boardroom]] — 회의가 벌어지는 공간 개념 (03-Spaces)
+- [[The-Meeting-Room]] — 회의가 벌어지는 공간 개념 (03-Spaces)
 - [[QUICK-DECISIONS]] — 결정 기록 예시 (10-Journal)
+

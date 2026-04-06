@@ -1,4 +1,4 @@
----
+﻿---
 title: 01 Log Square Dashboard
 date: 2026-04-06
 tags:
@@ -44,3 +44,4 @@ tags:
 
 - [[SQUARE_RULES]] — 문서 운영 규칙
 - [[QUICK-DECISIONS]] — 결정 로그 (10-Journal)
+

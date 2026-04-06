@@ -1,4 +1,4 @@
----
+﻿---
 title: Roadmap
 date: 2026-04-06
 updated: 2026-04-06
@@ -30,7 +30,7 @@ tags:
 - Next.js 웹 앱 뼈대 구성 (TypeScript 단일 스택)
 - Supabase 데이터 구조와 인증 설정
 - Mastra 에이전트 정의 및 Next.js API Routes 통합
-- War Room Supervisor 패턴으로 멀티에이전트 응답 구현
+- Meeting Room Supervisor 패턴으로 멀티에이전트 응답 구현
 - Zod 스키마 기반 구조화 출력 (decisions, actions, reviews)
 - 대표가 프로젝트를 생성하고 방에 배정
 - 핵심 임원 5명이 기본 회의에 참여
@@ -55,3 +55,4 @@ tags:
 
 - [[Office-UX-Direction]] — 제품 UX 방향 (08-Design)
 - [[2026-04-06-square-vault-bootstrap|square vault bootstrap]] — 초기 부트스트랩 문서 (09-Implementation/plans)
+

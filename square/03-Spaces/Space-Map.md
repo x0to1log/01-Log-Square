@@ -1,4 +1,4 @@
----
+﻿---
 title: Space Map
 date: 2026-04-06
 tags:
@@ -17,7 +17,7 @@ tags:
 
 1. 대표는 [[The-Lobby]]에서 프로젝트 목록을 본다.
 2. 프로젝트를 열면 해당 프로젝트의 `floorplan workspace`로 진입한다.
-3. 기본으로 [[The-Boardroom|The War Room]]이 열린다.
+3. 기본으로 [[The-Meeting-Room|The Meeting Room]]이 열린다.
 4. 필요하면 [[The-Individual-Zones]]에서 특정 에이전트와 DM을 나눈다.
 5. 중요한 결정은 [[The-Archive]]와 운영 패널에 남는다.
 
@@ -27,7 +27,7 @@ tags:
 |-------|------|
 | [[The-Lobby]] | 프로젝트 목록과 오늘의 상태를 보는 홈 |
 | [[The-Project-Rooms]] | 프로젝트별 floorplan shell과 대화 구조 |
-| [[The-Boardroom|The War Room]] | 프로젝트 기본 진입 회의 공간 |
+| [[The-Meeting-Room|The Meeting Room]] | 프로젝트 기본 진입 회의 공간 |
 | [[The-Individual-Zones]] | 각 에이전트와 개별 대화를 나누는 업무 구역 |
 | [[The-Archive]] | 결정, 회의록, SOP, 위키를 보관하는 기록실 |
 | [[The-Radar]] | 트렌드 스카우트와 외부 신호가 들어오는 레이더 룸 |
@@ -45,7 +45,7 @@ tags:
 ## Related
 
 - [[The-Lobby]] — 입구
-- [[The-Boardroom|The War Room]] — 의사결정 공간
+- [[The-Meeting-Room|The Meeting Room]] — 의사결정 공간
 - [[The-Individual-Zones]] — 개별 업무 공간
 - [[The-Project-Rooms]] — 프로젝트 실행 shell
 
@@ -54,3 +54,4 @@ tags:
 - [[Office-UX-Direction]] — 제품 UX 방향 (08-Design)
 - [[Hybrid-Floorplan-Workspace]] — 공간 UX 상세 설계 (08-Design)
 - [[Project-Portfolio]] — 공간이 매핑되는 프로젝트 목록 (04-Projects)
+

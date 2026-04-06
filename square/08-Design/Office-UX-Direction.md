@@ -1,4 +1,4 @@
----
+﻿---
 title: Office UX Direction
 date: 2026-04-06
 tags:
@@ -15,8 +15,8 @@ tags:
 
 - 프로젝트 목록에서 오늘의 우선순위를 읽는다.
 - 프로젝트에 들어가면 floorplan workspace가 열린다.
-- 기본으로 War Room에서 판단 재료를 받는다.
-- 필요하면 각 에이전트와 DM을 나누고 다시 War Room로 가져온다.
+- 기본으로 Meeting Room에서 판단 재료를 받는다.
+- 필요하면 각 에이전트와 DM을 나누고 다시 Meeting Room로 가져온다.
 - 아카이브에서 과거 결정을 되짚는다.
 
 ## UI 원칙
@@ -32,13 +32,13 @@ tags:
 
 - `Home`: 프로젝트 목록
 - `Project Workspace`: 하이브리드 플로어플랜 워크스페이스
-- `Default Open`: War Room
+- `Default Open`: Meeting Room
 - `Secondary Mode`: Individual Zones DM
 - `Companion Layer`: 01-Mobile
 
 ## 화면 구조
 
-- 왼쪽: War Room과 각 에이전트 DM 스레드
+- 왼쪽: Meeting Room과 각 에이전트 DM 스레드
 - 가운데: 현재 대화
 - 오른쪽: `결정 / 리스크 / 다음 액션 / 관련 문서`
 - 별도 보기: 탑다운 픽셀 오피스 맵
@@ -78,6 +78,7 @@ tags:
 ## See Also
 
 - [[Tech-Stack]] — 구현 기반 (09-Implementation)
-- [[War-Room-Layout]] — War Room 화면 설계
+- [[Meeting-Room-Layout]] — Meeting Room 화면 설계
 - [[Individual-Zones-Layout]] — Individual Zones 화면 설계
 - [[Mobile-Companion-Layout]] — 01-Mobile 화면 설계
+

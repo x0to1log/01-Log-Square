@@ -1,4 +1,4 @@
----
+﻿---
 title: Implementation Plan
 date: 2026-04-06
 updated: 2026-04-06
@@ -20,7 +20,7 @@ tags:
 - 에이전트 조직은 `Strategic Core + Review Core + Support/Execution + Specialists` 구조로 운영한다.
 - 조직 구조, 보고 체계, 결정권은 문서화된 상태를 우선한다.
 - 기본 진입점은 프로젝트 목록이다.
-- 프로젝트를 열면 `하이브리드 플로어플랜 워크스페이스`가 열리고, 기본 스레드는 War Room이다.
+- 프로젝트를 열면 `하이브리드 플로어플랜 워크스페이스`가 열리고, 기본 스레드는 Meeting Room이다.
 - 개별 에이전트와의 DM은 같은 프로젝트 맥락 안에서 지원한다.
 - 픽셀은 탑다운 캐릭터와 조형물 중심의 시각 악센트로만 사용한다.
 - 데이터베이스는 Supabase를 사용한다.
@@ -34,8 +34,8 @@ tags:
 ## 다음 구현 트랙
 
 1. v1 핵심 DB 엔터티와 테이블 구조 정의 (00008 마이그레이션 포함)
-2. War Room / DM을 함께 다루는 thread 모델 설계
-3. Mastra 에이전트 정의 및 Supervisor 패턴 설계 (War Room 멀티에이전트)
+2. Meeting Room / DM을 함께 다루는 thread 모델 설계
+3. Mastra 에이전트 정의 및 Supervisor 패턴 설계 (Meeting Room 멀티에이전트)
 4. 구조화 출력 스키마 정의 (Zod → decisions, actions, reviews)
 5. 대표 승인 UI/상태 모델 정의
 6. 픽셀 오피스 자산 프로토타입 정의
@@ -59,3 +59,4 @@ tags:
 
 - [[Decision-Rights]] — 제품에 반영해야 할 권한 규칙 (02-Organization)
 - [[Office-UX-Direction]] — 제품 경험 방향 (08-Design)
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: Quick Decisions
 date: 2026-04-06
 tags:
@@ -17,7 +17,7 @@ tags:
 - 01 Log Square는 외부 공유용 서비스 문서보다 `대표 개인을 위한 운영 환경`으로 먼저 정의한다.
 - 슬로건은 `From 0 to 1, Every Log Matters.`를 사용한다.
 - 기본 진입점은 프로젝트 목록으로 둔다.
-- 프로젝트를 열면 기본으로 `The War Room`이 열린다.
+- 프로젝트를 열면 기본으로 `The Meeting Room`이 열린다.
 - 각 에이전트와의 개별 대화는 프로젝트 내부 DM 형태로 지원한다.
 - UI는 `하이브리드 플로어플랜 워크스페이스`로 간다.
 - 픽셀은 탑다운 1타일 캐릭터와 작은 조형물 중심의 악센트로 사용한다.
@@ -43,6 +43,16 @@ tags:
 - OpenClaw는 검토 결과 v1에서 제외한다. 사유: 구조화 출력 미지원 (기능 요청 "not planned"으로 닫힘), 멀티에이전트 동일 세션 불가 (에이전트당 완전 격리), 에이전트 10개 기준 ~20-25GB RAM 필요, 커스텀 앱 백엔드 용도 공식 미지원.
 - DB 마이그레이션 00008 추가: `messages.delivery_status`, `agent_instances.persona_version`, `agent_instances.soul_synced_at`.
 
+## 2026-04-07
+
+- 모든 에이전트와 대표 캐릭터를 고양이로 통일한다. 역할 구분은 모색으로 표현한다.
+- 0to1log 프로젝트의 4테마 팔레트(Dark, Midnight, Light, Pink)를 오피스 공간별 색감으로 채택한다.
+- 테마 매핑: Dark → The Lobby, Midnight → The Meeting Room, Light → The Archive, Pink → The Individual Zones.
+- 픽셀 에셋 제작은 PixelLab API `create_map_object`를 사용한다. 캣로프 스타일, 48×48, side view.
+- CSO와 Brand Designer의 모색 컨셉을 스왑했다. CSO → 크림+핑크 포인트(샴), Brand Designer → 실버 라일락(연보라).
+- 악세서리는 캐릭터에 포함하지 않고 별도 소품(props)으로 분리한다. 48px에서 악세서리는 해상도 한계.
+- 상세 캐릭터 계획과 공간별 팔레트는 [[Pixel-Accent-System]]에 기록했다.
+
 ## Related
 
 - [[Representative-Role]] — 대표 역할 정의
@@ -52,3 +62,4 @@ tags:
 ## See Also
 
 - [[The-Archive]] — 기록 보존 공간 (03-Spaces)
+

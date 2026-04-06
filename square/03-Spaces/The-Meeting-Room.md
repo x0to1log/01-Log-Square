@@ -1,16 +1,17 @@
----
-title: The War Room
+﻿---
+title: The Meeting Room
 date: 2026-04-06
 tags:
   - spaces
   - decision
 aliases:
   - The Boardroom
+  - The War Room
 ---
 
-# The War Room
+# The Meeting Room
 
-> 대표, COO, CSO, CTO, QA가 핵심 안건을 다루는 공식 회의 공간. 각 프로젝트에 들어가면 기본으로 이 방이 열린다.
+> 대표, COO, CSO, CTO, Risk Critic, Verifier가 핵심 안건을 다루는 공식 회의 공간. 각 프로젝트에 들어가면 기본으로 이 방이 열린다.
 
 ## 역할
 
@@ -31,7 +32,7 @@ aliases:
 ## 화면 원칙
 
 - 중앙은 그룹 대화
-- 왼쪽은 War Room과 각 에이전트 DM 스레드 목록
+- 왼쪽은 Meeting Room과 각 에이전트 DM 스레드 목록
 - 오른쪽은 구조화된 운영 패널
 - 대표는 이 공간을 프로젝트의 기본 앵커로 사용한다
 
@@ -46,3 +47,4 @@ aliases:
 
 - [[Reporting-Lines]] — 조직 체계 (02-Organization)
 - [[Hybrid-Floorplan-Workspace]] — 화면 구조 상세 (08-Design)
+

@@ -1,4 +1,4 @@
----
+﻿---
 title: Individual Zones Layout
 date: 2026-04-06
 tags:
@@ -17,14 +17,14 @@ tags:
 ## 화면 목표
 
 - 특정 에이전트의 관점으로 더 깊게 파고들게 한다.
-- War Room보다 더 긴 분석과 초안을 허용한다.
-- 하지만 최종 합의는 언제나 War Room로 되돌아가게 만든다.
+- Meeting Room보다 더 긴 분석과 초안을 허용한다.
+- 하지만 최종 합의는 언제나 Meeting Room로 되돌아가게 만든다.
 
 ## 기본 규칙
 
 - 모든 DM은 특정 프로젝트 안에 속한다.
 - 프로젝트 밖의 글로벌 DM은 만들지 않는다.
-- DM 결과는 `War Room로 보내기`가 쉬워야 한다.
+- DM 결과는 `Meeting Room로 보내기`가 쉬워야 한다.
 - 에이전트별 개성은 정보 구조보다 뒤에 온다.
 
 ## 데스크톱 화면 해부
@@ -35,14 +35,14 @@ tags:
 - 방 이름
 예: `COO Office`, `CTO Office`
 - 에이전트 역할 배지
-- `Back to War Room`
+- `Back to Meeting Room`
 - `Map`
 
-`Back to War Room`은 항상 1차 액션으로 보여야 한다.
+`Back to Meeting Room`은 항상 1차 액션으로 보여야 한다.
 
 ### 2. 왼쪽 패널
 
-War Room과 같은 스레드 목록을 유지한다.
+Meeting Room과 같은 스레드 목록을 유지한다.
 
 이유:
 - 학습 비용이 낮다
@@ -63,7 +63,7 @@ DM은 일반 메신저처럼 편해야 하지만, 업무 툴이기도 하다.
 
 #### 빠른 액션
 
-- `Send to War Room`
+- `Send to Meeting Room`
 - `Promote to Decision`
 - `Convert to Action`
 - `Ask for Summary`
@@ -71,7 +71,7 @@ DM은 일반 메신저처럼 편해야 하지만, 업무 툴이기도 하다.
 
 ### 4. 우측 패널
 
-War Room보다 더 `에이전트 특화`되어야 한다.
+Meeting Room보다 더 `에이전트 특화`되어야 한다.
 
 #### 공통 패널 블록
 
@@ -84,7 +84,7 @@ War Room보다 더 `에이전트 특화`되어야 한다.
 - `Suggested Actions`
 이 에이전트가 권하는 다음 단계
 
-- `Promote to War Room`
+- `Promote to Meeting Room`
 합의 테이블로 보낼 후보
 
 ## 역할별 차이
@@ -141,14 +141,14 @@ War Room보다 더 `에이전트 특화`되어야 한다.
 ## 모바일 변형
 
 - 일반 DM처럼 단일 컬럼
-- 상단에 에이전트 이름, 역할, `War Room로 보내기`
+- 상단에 에이전트 이름, 역할, `Meeting Room로 보내기`
 - 구조화 정보는 액션 시트로 노출
 - 긴 초안은 `expand` 또는 note preview로 읽게 한다
 
 ## 실패하면 안 되는 것
 
 - DM이 프로젝트 밖의 사적인 채팅처럼 느껴지는 것
-- 결과를 War Room로 되돌리기 어려운 것
+- 결과를 Meeting Room로 되돌리기 어려운 것
 - 에이전트마다 화면 구조가 너무 달라지는 것
 - 장식이 많아지고 실무성이 약해지는 것
 
@@ -156,9 +156,10 @@ War Room보다 더 `에이전트 특화`되어야 한다.
 
 - [[Project-Workspace-Layout]] — 공통 shell
 - [[The-Individual-Zones]] — 공간 개념
-- [[War-Room-Layout]] — 합의 공간
+- [[Meeting-Room-Layout]] — 합의 공간
 
 ## See Also
 
 - [[Pixel-Accent-System]] — 픽셀 요소 설계
 - [[Agent-Team]] — 에이전트 역할 정의 (02-Organization)
+

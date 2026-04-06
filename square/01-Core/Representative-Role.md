@@ -1,4 +1,4 @@
----
+﻿---
 title: Representative Role
 date: 2026-04-06
 tags:
@@ -33,7 +33,7 @@ tags:
 2. 프로젝트 시작/중단/보류 결정
 3. 브랜드 핵심 방향 결정
 4. 외부 공개 여부 결정
-5. QA의 `Red Flag` override 여부 결정
+5. Risk Critic의 `Red Flag` override 여부 결정
 
 ## 대표가 시스템에 기대하는 것
 
@@ -52,3 +52,4 @@ tags:
 
 - [[Reporting-Lines]] — 보고 체계 (02-Organization)
 - [[Project-Portfolio]] — 대표가 관리하는 프로젝트 묶음 (04-Projects)
+

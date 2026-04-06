@@ -1,4 +1,4 @@
----
+﻿---
 title: The Radar
 date: 2026-04-06
 tags:
@@ -26,3 +26,4 @@ tags:
 ## See Also
 
 - [[Brand-Vibe]] — 외부에서 가져올 감각 언어 (06-Brand)
+

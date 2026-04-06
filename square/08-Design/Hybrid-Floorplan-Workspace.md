@@ -1,4 +1,4 @@
----
+﻿---
 title: Hybrid Floorplan Workspace
 date: 2026-04-06
 tags:
@@ -17,14 +17,14 @@ tags:
 
 - 프로젝트 목록이 기본 진입점이다.
 - 프로젝트를 열면 floorplan workspace가 열린다.
-- 기본으로 [[The-Boardroom|The War Room]]이 선택된다.
+- 기본으로 [[The-Meeting-Room|The Meeting Room]]이 선택된다.
 - 필요하면 [[The-Individual-Zones]]에서 각 에이전트와 DM을 나눈다.
 - 모든 대화는 결국 프로젝트 운영 구조 안으로 환원된다.
 
 ## 레이아웃
 
 - 상단: 프로젝트명, 현재 phase, 열린 리스크, 대기 승인
-- 왼쪽: War Room + 에이전트 DM 목록
+- 왼쪽: Meeting Room + 에이전트 DM 목록
 - 가운데: 현재 대화
 - 오른쪽: 결정, 리스크, 다음 액션, 관련 문서
 - 별도 보기 또는 홈 레이어: 탑다운 픽셀 오피스 맵
@@ -45,7 +45,7 @@ tags:
 ## 승인된 용어
 
 - `The Lobby` — 프로젝트 목록 홈
-- `The War Room` — 기본 진입 회의방
+- `The Meeting Room` — 기본 진입 회의방
 - `The Individual Zones` — 에이전트별 DM 구역
 - `01-Mobile` — 대표용 컴패니언 채널
 
@@ -62,7 +62,7 @@ tags:
 - [[Space-Map]] — 공간 구조
 - [[Implementation-Plan]] — 제품으로 옮길 기준
 - [[Project-Workspace-Layout]] — 공통 shell 상세
-- [[War-Room-Layout]] — 기본 진입 화면 상세
+- [[Meeting-Room-Layout]] — 기본 진입 화면 상세
 - [[Individual-Zones-Layout]] — 개별 DM 화면 상세
 
 ## See Also
@@ -71,3 +71,4 @@ tags:
 - [[01-Mobile]] — 보조 채널 (03-Spaces)
 - [[Mobile-Companion-Layout]] — 모바일 상세
 - [[Pixel-Accent-System]] — 픽셀 시각 규칙
+

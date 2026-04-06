@@ -1,4 +1,4 @@
----
+﻿---
 title: Reporting Lines
 date: 2026-04-06
 tags:
@@ -57,3 +57,4 @@ tags:
 
 - [[Representative-Role]] — 대표의 역할 (01-Core)
 - [[Project-Portfolio]] — 이 구조가 적용되는 프로젝트 목록 (04-Projects)
+

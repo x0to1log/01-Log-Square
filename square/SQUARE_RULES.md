@@ -1,4 +1,4 @@
----
+﻿---
 title: Square 운영 규칙
 date: 2026-04-06
 tags:
@@ -58,7 +58,7 @@ tags:
 ## 운영 기준
 
 - 대표가 최종 승인하지 않은 내용은 초안으로 간주한다.
-- QA가 `Red Flag`를 올린 안건은 대표의 명시적 override 전까지 진행하지 않는다.
+- Risk Critic이 `Red Flag`를 올린 안건은 대표의 명시적 override 전까지 진행하지 않는다.
 - COO가 정리한 액션 아이템과 도큐멘테이션 매니저가 남긴 기록이 공식 버전이다.
 
 ## Related
@@ -71,3 +71,4 @@ tags:
 
 - [[Agent-Team]] — 조직 구성과 역할 (02-Organization)
 - [[Operating-Rhythm]] — 운영 리듬과 리뷰 주기 (05-Operations)
+

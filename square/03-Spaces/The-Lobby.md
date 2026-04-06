@@ -1,4 +1,4 @@
----
+﻿---
 title: The Lobby
 date: 2026-04-06
 tags:
@@ -23,17 +23,18 @@ tags:
 - 현재 활성 프로젝트
 - 최근 회의 3건
 - 대기 중인 승인 항목
-- QA의 열린 `Red Flag`
+- Risk Critic의 열린 `Red Flag`
 - 프로젝트별 상태, 최근 대화, 열린 액션 개수
 
 ## Related
 
 - [[Space-Map]] — 전체 공간 구조
 - [[The-Project-Rooms]] — 프로젝트 진입 이후 구조
-- [[The-Boardroom|The War Room]] — 프로젝트 기본 진입 화면
+- [[The-Meeting-Room|The Meeting Room]] — 프로젝트 기본 진입 화면
 - [[CURRENT-SPRINT]] — 지금 집중 중인 일
 
 ## See Also
 
 - [[Office-UX-Direction]] — 로비 UX 방향 (08-Design)
 - [[Hybrid-Floorplan-Workspace]] — 프로젝트 홈 이후 경험 (08-Design)
+
