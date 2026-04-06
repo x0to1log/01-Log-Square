@@ -1,0 +1,3 @@
+-- Intentionally empty for now.
+-- Core reference data such as agent_templates lives in migrations so
+-- production and local environments stay aligned from the first deploy.
