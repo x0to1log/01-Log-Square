@@ -1,4 +1,4 @@
-create table public.thread_events (
+﻿create table public.thread_events (
   id bigint generated always as identity primary key,
   owner_user_id uuid not null references public.profiles(id) on delete cascade,
   thread_id bigint not null references public.threads(id) on delete cascade,
@@ -80,7 +80,7 @@ set search_path = public
 as $$
 declare
   target_owner uuid;
-  war_room_thread_id bigint;
+  meeting_room_thread_id bigint;
 begin
   select p.owner_user_id
   into target_owner
@@ -137,16 +137,16 @@ begin
     );
 
   select th.id
-  into war_room_thread_id
+  into meeting_room_thread_id
   from public.threads th
   where th.owner_user_id = target_owner
     and th.project_id = target_project_id
-    and th.thread_type = 'war_room'
+    and th.thread_type = 'meeting_room'
     and th.archived_at is null
   order by th.id
   limit 1;
 
-  if war_room_thread_id is null then
+  if meeting_room_thread_id is null then
     insert into public.threads (
       owner_user_id,
       scope_type,
@@ -160,12 +160,12 @@ begin
       target_owner,
       'project',
       target_project_id,
-      'war_room',
-      'The War Room',
+      'meeting_room',
+      'The Meeting Room',
       true,
       now()
     )
-    returning id into war_room_thread_id;
+    returning id into meeting_room_thread_id;
   end if;
 
   insert into public.thread_agent_memberships (
@@ -177,7 +177,7 @@ begin
   )
   select
     target_owner,
-    war_room_thread_id,
+    meeting_room_thread_id,
     ai.id,
     'core',
     true
@@ -187,7 +187,7 @@ begin
     and not exists (
       select 1
       from public.thread_agent_memberships tam
-      where tam.thread_id = war_room_thread_id
+      where tam.thread_id = meeting_room_thread_id
         and tam.agent_instance_id = ai.id
     );
 
@@ -221,3 +221,4 @@ begin
     );
 end;
 $$;
+

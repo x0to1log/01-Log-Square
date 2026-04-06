@@ -1,9 +1,9 @@
-create table public.threads (
+﻿create table public.threads (
   id bigint generated always as identity primary key,
   owner_user_id uuid not null references public.profiles(id) on delete cascade,
   scope_type text not null check (scope_type in ('workspace', 'project')),
   project_id bigint references public.projects(id) on delete cascade,
-  thread_type text not null check (thread_type in ('war_room', 'direct_message', 'briefing', 'system')),
+  thread_type text not null check (thread_type in ('meeting_room', 'direct_message', 'briefing', 'system')),
   title text not null,
   direct_agent_instance_id bigint references public.agent_instances(id) on delete restrict,
   is_default boolean not null default false,
@@ -22,7 +22,7 @@ create table public.threads (
     or direct_agent_instance_id is not null
   ),
   check (
-    thread_type <> 'war_room'
+    thread_type <> 'meeting_room'
     or (scope_type = 'project' and project_id is not null)
   )
 );
@@ -63,3 +63,4 @@ create table public.messages (
     (sender_type in ('representative', 'system') and sender_agent_instance_id is null)
   )
 );
+

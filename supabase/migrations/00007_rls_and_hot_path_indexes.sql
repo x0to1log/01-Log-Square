@@ -1,4 +1,4 @@
-alter table public.profiles enable row level security;
+﻿alter table public.profiles enable row level security;
 alter table public.projects enable row level security;
 alter table public.agent_templates enable row level security;
 alter table public.agent_instances enable row level security;
@@ -157,9 +157,9 @@ create index idx_threads_owner_type_last_message
 on public.threads (owner_user_id, thread_type, last_message_at desc)
 where archived_at is null;
 
-create unique index uq_threads_active_war_room_per_project
+create unique index uq_threads_active_meeting_room_per_project
 on public.threads (project_id)
-where thread_type = 'war_room' and archived_at is null;
+where thread_type = 'meeting_room' and archived_at is null;
 
 create unique index uq_threads_active_dm_per_scope_agent
 on public.threads (owner_user_id, scope_type, coalesce(project_id, -1::bigint), direct_agent_instance_id)
@@ -209,3 +209,4 @@ on public.action_item_events (action_item_id, created_at desc);
 
 create index idx_review_events_review_created
 on public.review_events (review_id, created_at desc);
+
