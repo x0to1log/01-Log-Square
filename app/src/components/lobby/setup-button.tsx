@@ -25,15 +25,15 @@ export function SetupButton() {
   }
 
   return (
-    <div className="rounded-lg border border-dashed border-zinc-300 p-12 text-center dark:border-zinc-700">
+    <div className="rounded-lg border border-dashed border-border p-12 text-center">
       <h2 className="text-lg font-semibold">01 Log Square에 오신 것을 환영합니다</h2>
-      <p className="mt-2 text-sm text-zinc-500">
+      <p className="mt-2 text-sm text-foreground-muted">
         시작하려면 아래 버튼을 눌러 초기 설정을 완료하세요.
       </p>
       <button
         onClick={handleSetup}
         disabled={loading}
-        className="mt-4 rounded-lg bg-zinc-900 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:opacity-50 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+        className="mt-4 rounded-lg bg-accent px-6 py-2 text-sm font-medium text-background transition-colors hover:bg-accent-hover disabled:opacity-50"
       >
         {loading ? '설정 중...' : '시작하기'}
       </button>

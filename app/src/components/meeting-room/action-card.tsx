@@ -9,8 +9,8 @@ const STATUS_LABELS: Record<string, string> = {
 }
 
 const PRIORITY_COLORS: Record<string, string> = {
-  low: 'text-zinc-400',
-  medium: 'text-blue-500',
+  low: 'text-foreground-muted',
+  medium: 'text-accent',
   high: 'text-orange-500',
   critical: 'text-red-500',
 }
@@ -18,23 +18,23 @@ const PRIORITY_COLORS: Record<string, string> = {
 export function ActionCard({ actions }: { actions: ActionItem[] }) {
   return (
     <section>
-      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-400">
+      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-foreground-muted">
         Next Actions
       </h3>
 
       {actions.length === 0 ? (
-        <p className="text-sm text-zinc-400">열린 액션 없음</p>
+        <p className="text-sm text-foreground-muted">열린 액션 없음</p>
       ) : (
         <div className="flex flex-col gap-2">
           {actions.map((a) => (
             <div
               key={a.id}
-              className="flex items-start gap-2 rounded-lg border border-zinc-200 p-3 dark:border-zinc-800"
+              className="flex items-start gap-2 rounded-lg border border-border p-3"
             >
               <span className={`mt-0.5 text-xs ${PRIORITY_COLORS[a.priority] ?? ''}`}>●</span>
               <div className="min-w-0 flex-1">
                 <p className="text-sm">{a.title}</p>
-                <div className="mt-0.5 flex items-center gap-2 text-xs text-zinc-400">
+                <div className="mt-0.5 flex items-center gap-2 text-xs text-foreground-muted">
                   <span>{STATUS_LABELS[a.status] ?? a.status}</span>
                   {a.due_at && (
                     <span>

@@ -44,12 +44,12 @@ export default async function MeetingRoomPage({
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="flex items-center justify-between border-b border-zinc-200 px-4 py-3 dark:border-zinc-800">
+      <div className="flex items-center justify-between border-b border-border px-4 py-3">
         <div className="flex items-center gap-3">
-          <div className="h-8 w-8 rounded-lg bg-zinc-200 dark:bg-zinc-700" />
+          <div className="h-8 w-8 rounded-lg bg-surface-active" />
           <div>
-            <h2 className="text-sm font-semibold">The Meeting Room</h2>
-            <p className="text-xs text-zinc-400">전체 회의 · Core 멤버 참여</p>
+            <h2 className="text-sm font-semibold text-foreground">The Meeting Room</h2>
+            <p className="text-xs text-foreground-muted">전체 회의 · Core 멤버 참여</p>
           </div>
         </div>
         <PanelToggleButton />

@@ -11,10 +11,10 @@ const STATUS_LABELS: Record<string, string> = {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  draft: 'text-zinc-500',
-  pending_review: 'text-amber-600 dark:text-amber-400',
-  approved: 'text-emerald-600 dark:text-emerald-400',
-  rejected: 'text-red-600 dark:text-red-400',
+  draft: 'text-foreground-muted',
+  pending_review: 'text-amber-600',
+  approved: 'text-emerald-600',
+  rejected: 'text-red-600',
 }
 
 export function DecisionCard({
@@ -33,18 +33,18 @@ export function DecisionCard({
 
   return (
     <section>
-      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-400">
+      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-foreground-muted">
         Current Decisions
       </h3>
 
       {decisions.length === 0 ? (
-        <p className="text-sm text-zinc-400">열린 결정 없음</p>
+        <p className="text-sm text-foreground-muted">열린 결정 없음</p>
       ) : (
         <div className="flex flex-col gap-2">
           {decisions.map((d) => (
             <div
               key={d.id}
-              className="rounded-lg border border-zinc-200 p-3 dark:border-zinc-800"
+              className="rounded-lg border border-border p-3"
             >
               <div className="flex items-start justify-between gap-2">
                 <p className="text-sm font-medium">{d.title}</p>
@@ -53,7 +53,7 @@ export function DecisionCard({
                 </span>
               </div>
               {d.summary_md && (
-                <p className="mt-1 line-clamp-2 text-xs text-zinc-500">{d.summary_md}</p>
+                <p className="mt-1 line-clamp-2 text-xs text-foreground-muted">{d.summary_md}</p>
               )}
               {d.status === 'pending_review' && (
                 <button

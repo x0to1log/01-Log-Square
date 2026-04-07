@@ -12,7 +12,7 @@ export function AgentHeader({
   agent: AgentInstance
 }) {
   return (
-    <div className="flex items-center gap-3 border-b border-zinc-200 px-4 py-3 dark:border-zinc-800">
+    <div className="flex items-center gap-3 border-b border-border px-4 py-3">
       <AgentProfilePopover
         agentKey={agent.key}
         agentName={agent.name}
@@ -22,17 +22,16 @@ export function AgentHeader({
         <img
           src={`/sprites/characters/${agent.key}/south.png`}
           alt={agent.name}
-          className="h-8 w-8 rounded-lg object-contain"
-          style={{ imageRendering: 'pixelated' }}
+          className="pixel-art h-8 w-8 rounded-lg object-contain"
         />
       </AgentProfilePopover>
       <div className="flex-1">
         <h2 className="text-sm font-semibold">{agent.name}</h2>
-        <p className="text-xs text-zinc-400">{agent.role_title}</p>
+        <p className="text-xs text-foreground-muted">{agent.role_title}</p>
       </div>
       <Link
         href={`/project/${projectId}`}
-        className="rounded-md border border-zinc-300 px-3 py-1 text-xs text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800"
+        className="rounded-md border border-border px-3 py-1 text-xs text-foreground-muted transition-colors hover:bg-surface-hover"
       >
         Back to Meeting Room
       </Link>

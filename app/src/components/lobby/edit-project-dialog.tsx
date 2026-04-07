@@ -62,40 +62,40 @@ export function EditProjectDialog({
       />
 
       {/* Dialog */}
-      <div className="fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl border border-zinc-200 bg-white p-6 shadow-2xl dark:border-zinc-700 dark:bg-zinc-900">
+      <div className="fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl border border-border bg-background p-6 shadow-2xl">
         <h2 className="mb-4 text-lg font-semibold">프로젝트 수정</h2>
 
         <div className="flex flex-col gap-4">
           {/* Name */}
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-500">프로젝트 이름</label>
+            <label className="mb-1 block text-xs font-medium text-foreground-muted">프로젝트 이름</label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800"
+              className="w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-accent focus:outline-none"
             />
           </div>
 
           {/* Description */}
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-500">설명</label>
+            <label className="mb-1 block text-xs font-medium text-foreground-muted">설명</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={2}
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800"
+              className="w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-accent focus:outline-none"
             />
           </div>
 
           {/* Status + Phase row */}
           <div className="flex gap-3">
             <div className="flex-1">
-              <label className="mb-1 block text-xs font-medium text-zinc-500">상태</label>
+              <label className="mb-1 block text-xs font-medium text-foreground-muted">상태</label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value as ProjectStatus)}
-                className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800"
+                className="w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-accent focus:outline-none"
               >
                 {STATUS_OPTIONS.map((o) => (
                   <option key={o.value} value={o.value}>{o.label}</option>
@@ -103,11 +103,11 @@ export function EditProjectDialog({
               </select>
             </div>
             <div className="flex-1">
-              <label className="mb-1 block text-xs font-medium text-zinc-500">단계</label>
+              <label className="mb-1 block text-xs font-medium text-foreground-muted">단계</label>
               <select
                 value={phase}
                 onChange={(e) => setPhase(e.target.value as ProjectPhase)}
-                className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800"
+                className="w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-accent focus:outline-none"
               >
                 {PHASE_OPTIONS.map((o) => (
                   <option key={o.value} value={o.value}>{o.label}</option>
@@ -121,14 +121,14 @@ export function EditProjectDialog({
         <div className="mt-6 flex justify-end gap-2">
           <button
             onClick={onClose}
-            className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300"
+            className="rounded-lg px-4 py-2 text-sm text-foreground-muted hover:text-foreground"
           >
             취소
           </button>
           <button
             onClick={handleSave}
             disabled={saving || !name.trim()}
-            className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-700 disabled:opacity-50 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+            className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-background hover:bg-accent-hover disabled:opacity-50"
           >
             {saving ? '저장 중...' : '저장'}
           </button>

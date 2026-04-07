@@ -40,7 +40,7 @@ export function CreateProjectDialog() {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+        className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-accent-hover"
       >
         새 프로젝트
       </button>
@@ -51,7 +51,7 @@ export function CreateProjectDialog() {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900"
+        className="w-full max-w-md rounded-xl bg-background p-6 shadow-xl"
       >
         <h2 className="mb-4 text-lg font-semibold">새 프로젝트</h2>
 
@@ -63,7 +63,7 @@ export function CreateProjectDialog() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="예: 01 Log 브랜드 런칭"
-          className="mb-4 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800"
+          className="mb-4 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-accent focus:outline-none"
           autoFocus
         />
 
@@ -75,21 +75,21 @@ export function CreateProjectDialog() {
           onChange={(e) => setDescription(e.target.value)}
           placeholder="이 프로젝트에 대한 간단한 설명"
           rows={3}
-          className="mb-6 w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800"
+          className="mb-6 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-accent focus:outline-none"
         />
 
         <div className="flex justify-end gap-2">
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="rounded-lg px-4 py-2 text-sm text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300"
+            className="rounded-lg px-4 py-2 text-sm text-foreground-muted hover:text-foreground"
           >
             취소
           </button>
           <button
             type="submit"
             disabled={loading || !name.trim()}
-            className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:opacity-50 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+            className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-accent-hover disabled:opacity-50"
           >
             {loading ? '생성 중...' : '만들기'}
           </button>
