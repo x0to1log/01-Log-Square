@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server'
 import { createServerClient } from '@/lib/supabase/server'
+import { requireAuth } from '@/lib/api-auth'
+import { checkDailyBudget } from '@/lib/ai-budget'
+import { rateLimit } from '@/lib/rate-limit'
 import { getProjectAgent, selectModel } from '@/mastra/agents'
 import { loadProjectContext, formatProjectContext } from '@/mastra/context'
 import type { Message, Thread } from '@/lib/types/database'
@@ -10,6 +13,21 @@ export async function POST(
   req: Request,
   { params }: { params: Promise<{ agentKey: string }> },
 ) {
+  const auth = await requireAuth()
+  if (auth.error) return auth.error
+
+  // Rate limit: 5 requests per minute
+  const rl = rateLimit(`dm:${auth.user.id}`, 5, 60_000)
+  if (!rl.allowed) {
+    return NextResponse.json({ error: 'Too many requests. Please wait.' }, { status: 429 })
+  }
+
+  // Budget check
+  const budget = await checkDailyBudget()
+  if (!budget.allowed) {
+    return NextResponse.json({ error: 'Daily AI budget exceeded.' }, { status: 429 })
+  }
+
   const { agentKey } = await params
   const supabase = createServerClient()
   const body = await req.json()
@@ -20,9 +38,16 @@ export async function POST(
     body_md: string
   }
 
+  // Input validation
   if (!project_id || !thread_id || !body_md?.trim()) {
     return NextResponse.json(
       { error: 'project_id, thread_id, and body_md are required' },
+      { status: 400 },
+    )
+  }
+  if (typeof body_md !== 'string' || body_md.length > 5000) {
+    return NextResponse.json(
+      { error: 'Message too long (max 5000 characters)' },
       { status: 400 },
     )
   }

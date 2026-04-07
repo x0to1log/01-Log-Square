@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createServerClient } from '@/lib/supabase/server'
+import { requireAuth } from '@/lib/api-auth'
 import type { Thread } from '@/lib/types/database'
 
 /**
@@ -11,6 +12,9 @@ export async function POST(
   _req: Request,
   { params }: { params: Promise<{ threadId: string }> },
 ) {
+  const auth = await requireAuth()
+  if (auth.error) return auth.error
+
   const { threadId } = await params
   const supabase = createServerClient()
 

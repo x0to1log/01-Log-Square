@@ -1,11 +1,15 @@
 import { NextResponse } from 'next/server'
 import { createServerClient } from '@/lib/supabase/server'
+import { requireAuth } from '@/lib/api-auth'
 import type { Decision } from '@/lib/types/database'
 
 export async function POST(
   _req: Request,
   { params }: { params: Promise<{ id: string; decisionId: string }> },
 ) {
+  const auth = await requireAuth()
+  if (auth.error) return auth.error
+
   const { decisionId } = await params
   const supabase = createServerClient()
 
