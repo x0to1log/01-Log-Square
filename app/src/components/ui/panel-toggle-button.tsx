@@ -8,7 +8,7 @@ export function PanelToggleButton() {
   return (
     <button
       onClick={toggle}
-      className="hidden items-center gap-1.5 rounded-md px-2 py-1 text-xs text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 lg:flex dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+      className="hidden items-center gap-1.5 rounded-md px-2 py-1 text-xs text-foreground-muted hover:bg-surface-hover hover:text-foreground lg:flex"
       aria-label={open ? '운영 패널 닫기' : '운영 패널 열기'}
     >
       <svg

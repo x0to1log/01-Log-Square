@@ -11,7 +11,7 @@ export function CollapsiblePanel({
 
   return (
     <aside
-      className={`hidden shrink-0 overflow-y-auto border-l border-zinc-200 transition-[width] duration-200 lg:block dark:border-zinc-800 ${
+      className={`hidden shrink-0 overflow-y-auto border-l border-border transition-[width] duration-200 lg:block ${
         open ? 'w-[340px]' : 'w-0 overflow-hidden border-l-0'
       }`}
     >

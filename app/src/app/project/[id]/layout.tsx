@@ -4,7 +4,9 @@ import type { Project, Thread, AgentInstance } from '@/lib/types/database'
 import { GlobalBar } from '@/components/ui/global-bar'
 import { MobileHeader } from '@/components/ui/mobile-header'
 import { PanelProvider } from '@/components/ui/panel-context'
-import { CollapsiblePanel } from '@/components/ui/collapsible-panel'
+import { ViewModeProvider } from '@/components/ui/view-mode-context'
+import { ViewModeToggle } from '@/components/ui/view-mode-toggle'
+import { ProjectWorkspace } from '@/components/ui/project-workspace'
 import { ThreadSidebar } from '@/components/meeting-room/thread-sidebar'
 import { OperationsPanel } from '@/components/meeting-room/operations-panel'
 
@@ -69,6 +71,7 @@ export default async function ProjectLayout({
 
   return (
     <PanelProvider>
+    <ViewModeProvider>
     <div className="flex h-screen flex-col">
       {/* Desktop: top bar (hidden on mobile) */}
       <div className="hidden lg:block">
@@ -76,7 +79,9 @@ export default async function ProjectLayout({
           project={project}
           currentRoom="The Meeting Room"
           pendingCount={pendingDecisions?.length ?? 0}
-        />
+        >
+          <ViewModeToggle />
+        </GlobalBar>
       </div>
 
       {/* Mobile: compact header with drawer triggers (hidden on desktop) */}
@@ -90,24 +95,17 @@ export default async function ProjectLayout({
         }
       />
 
-      {/* 3-column layout */}
-      <div className="flex flex-1 overflow-hidden">
-        {/* Left sidebar — desktop only */}
-        <aside className="hidden w-[300px] shrink-0 overflow-y-auto border-r border-zinc-200 lg:block dark:border-zinc-800">
-          {sidebarContent}
-        </aside>
-
-        {/* Center: conversation — always visible */}
-        <main className="flex min-w-0 flex-1 flex-col overflow-hidden">
-          {children}
-        </main>
-
-        {/* Right: operations panel — collapsible on desktop */}
-        <CollapsiblePanel>
-          {operationsContent}
-        </CollapsiblePanel>
-      </div>
+      {/* Map or conversation workspace */}
+      <ProjectWorkspace
+        sidebarContent={sidebarContent}
+        operationsContent={operationsContent}
+        projectId={project.id}
+        agents={agents ?? []}
+      >
+        {children}
+      </ProjectWorkspace>
     </div>
+    </ViewModeProvider>
     </PanelProvider>
   )
 }

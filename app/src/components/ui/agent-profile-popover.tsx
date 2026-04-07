@@ -11,10 +11,10 @@ const LAYER_LABELS: Record<string, string> = {
 }
 
 const LAYER_COLORS: Record<string, string> = {
-  strategic_core: 'bg-amber-500/15 text-amber-600 dark:text-amber-400',
-  review_core: 'bg-red-500/15 text-red-600 dark:text-red-400',
-  support_execution: 'bg-blue-500/15 text-blue-600 dark:text-blue-400',
-  specialist: 'bg-purple-500/15 text-purple-600 dark:text-purple-400',
+  strategic_core: 'bg-amber-500/15 text-amber-600',
+  review_core: 'bg-red-500/15 text-red-600',
+  support_execution: 'bg-accent-muted text-accent',
+  specialist: 'bg-purple-500/15 text-purple-600',
 }
 
 // Map agent keys to their layer
@@ -69,7 +69,7 @@ export function AgentProfilePopover({
 
   const layer = AGENT_LAYER[agentKey] ?? 'specialist'
   const layerLabel = LAYER_LABELS[layer] ?? layer
-  const layerColor = LAYER_COLORS[layer] ?? 'bg-zinc-500/15 text-zinc-500'
+  const layerColor = LAYER_COLORS[layer] ?? 'bg-surface text-foreground-muted'
 
   return (
     <div className="relative inline-block">
@@ -84,24 +84,23 @@ export function AgentProfilePopover({
       {isOpen && (
         <div
           ref={popoverRef}
-          className="absolute left-0 top-full z-50 mt-2 w-64 rounded-xl border border-zinc-200 bg-white p-4 shadow-lg dark:border-zinc-700 dark:bg-zinc-900"
+          className="absolute left-0 top-full z-50 mt-2 w-64 rounded-xl border border-border bg-background p-4 shadow-lg"
         >
           {/* Profile image */}
           <div className="mb-3 flex justify-center">
             <img
               src={`/sprites/characters/${agentKey}/south.png`}
               alt={agentName}
-              className="h-20 w-20 rounded-xl object-contain"
-              style={{ imageRendering: 'pixelated' }}
+              className="pixel-art h-20 w-20 rounded-xl object-contain"
             />
           </div>
 
           {/* Name & title */}
           <div className="mb-3 text-center">
-            <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+            <h3 className="text-sm font-semibold text-foreground">
               {agentName}
             </h3>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            <p className="text-xs text-foreground-muted">
               {roleTitle}
             </p>
           </div>
@@ -114,7 +113,7 @@ export function AgentProfilePopover({
           </div>
 
           {/* Status */}
-          <div className="mb-3 flex items-center justify-center gap-1.5 text-xs text-zinc-400">
+          <div className="mb-3 flex items-center justify-center gap-1.5 text-xs text-foreground-muted">
             <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
             활성
           </div>
@@ -124,7 +123,7 @@ export function AgentProfilePopover({
             <Link
               href={`/project/${projectId}/dm/${agentKey}`}
               onClick={() => setIsOpen(false)}
-              className="block w-full rounded-lg border border-zinc-200 px-3 py-2 text-center text-xs font-medium text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+              className="block w-full rounded-lg border border-border px-3 py-2 text-center text-xs font-medium text-foreground-muted transition-colors hover:bg-surface-hover"
             >
               DM 보내기
             </Link>

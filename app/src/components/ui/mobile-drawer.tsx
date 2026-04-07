@@ -45,7 +45,7 @@ export function MobileDrawer({
 
       {/* Drawer panel */}
       <div
-        className={`fixed top-0 z-50 h-full w-[300px] bg-white transition-transform duration-200 dark:bg-zinc-950 ${
+        className={`fixed top-0 z-50 h-full w-[300px] bg-background transition-transform duration-200 ${
           side === 'left' ? 'left-0' : 'right-0'
         } ${
           open
