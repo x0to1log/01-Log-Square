@@ -31,8 +31,8 @@ export function MessageBubble({
   // System messages (help, status, etc.) — full width, no avatar, card style
   if (isSystem) {
     return (
-      <div className="rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 dark:border-zinc-700 dark:bg-zinc-900/50">
-        <div className="prose prose-sm prose-zinc max-w-none dark:prose-invert prose-headings:mb-1 prose-headings:mt-2 prose-headings:text-xs prose-headings:font-semibold prose-p:my-1 prose-ul:my-1 prose-li:my-0.5 prose-strong:text-inherit prose-code:rounded prose-code:bg-zinc-200 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-xs prose-code:font-normal prose-code:before:content-none prose-code:after:content-none dark:prose-code:bg-zinc-800">
+      <div className="rounded-lg border border-border bg-surface px-4 py-3">
+        <div className="prose prose-sm max-w-none prose-headings:mb-1 prose-headings:mt-2 prose-headings:text-xs prose-headings:font-semibold prose-headings:text-foreground prose-p:my-1 prose-p:text-foreground prose-ul:my-1 prose-li:my-0.5 prose-li:text-foreground prose-strong:text-foreground prose-code:rounded prose-code:bg-surface-active prose-code:px-1.5 prose-code:py-0.5 prose-code:text-xs prose-code:font-normal prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none">
           <Markdown>{message.body_md}</Markdown>
         </div>
       </div>
@@ -83,19 +83,15 @@ export function MessageBubble({
     <div className={`flex gap-3 ${isRepresentative ? 'flex-row-reverse' : ''}`}>
       {renderAvatar()}
 
-      <div className={`${isRepresentative ? 'max-w-[70%] text-right' : 'max-w-[85%]'}`}>
-        <div
-          className={`mb-0.5 flex items-center gap-2 text-xs text-zinc-400 ${
-            isRepresentative ? 'justify-end' : ''
-          }`}
-        >
+      <div className={`${isRepresentative ? 'max-w-[70%]' : 'max-w-[85%]'}`}>
+        <div className="mb-0.5 flex items-center gap-2 text-xs text-foreground-muted">
           {isRepresentative ? (
-            <span className="font-medium text-blue-600 dark:text-blue-400">대표</span>
+            <span className="font-medium text-accent">대표</span>
           ) : (
-            <span className="font-medium">{senderName}</span>
+            <span className="font-medium text-foreground">{senderName}</span>
           )}
           {agentInfo?.role_title && (
-            <span className="text-zinc-300 dark:text-zinc-600">{agentInfo.role_title}</span>
+            <span className="text-foreground-muted/50">{agentInfo.role_title}</span>
           )}
           <span>{time}</span>
         </div>
@@ -103,21 +99,21 @@ export function MessageBubble({
         <div
           className={`rounded-xl px-3 py-2 text-sm leading-relaxed ${
             isRepresentative
-              ? 'bg-blue-600 text-white'
-              : 'bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200'
+              ? 'bg-accent text-background'
+              : 'bg-surface text-foreground'
           }`}
         >
           {isRepresentative ? (
             <p className="whitespace-pre-wrap">{message.body_md}</p>
           ) : (
-            <div className="prose prose-sm prose-zinc max-w-none dark:prose-invert prose-headings:mb-1 prose-headings:mt-3 prose-headings:text-sm prose-headings:font-semibold prose-p:my-1 prose-ul:my-1 prose-li:my-0.5 prose-strong:text-inherit">
+            <div className="prose prose-sm max-w-none prose-headings:mb-1 prose-headings:mt-3 prose-headings:text-sm prose-headings:font-semibold prose-headings:text-foreground prose-p:my-1 prose-p:text-foreground prose-ul:my-1 prose-li:my-0.5 prose-li:text-foreground prose-strong:text-foreground">
               <Markdown>{message.body_md}</Markdown>
             </div>
           )}
         </div>
 
         {message.message_kind !== 'chat' && (
-          <span className="mt-0.5 inline-block rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-500 dark:bg-zinc-800">
+          <span className="mt-0.5 inline-block rounded-full bg-surface-active px-2 py-0.5 text-xs text-foreground-muted">
             {message.message_kind}
           </span>
         )}

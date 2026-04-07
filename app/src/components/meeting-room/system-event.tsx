@@ -6,19 +6,19 @@ export function SystemEvent({ message }: { message: Message }) {
 
   return (
     <div className="flex items-center gap-2 py-1">
-      <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+      <div className="h-px flex-1 bg-border" />
       <p
         className={`text-xs font-medium ${
           isRedFlag
-            ? 'text-red-600 dark:text-red-400'
+            ? 'text-red-600'
             : isBlocked
-              ? 'text-amber-600 dark:text-amber-400'
-              : 'text-zinc-400'
+              ? 'text-amber-600'
+              : 'text-foreground-muted'
         }`}
       >
         {message.body_md}
       </p>
-      <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+      <div className="h-px flex-1 bg-border" />
     </div>
   )
 }

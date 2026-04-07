@@ -1,10 +1,24 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Message } from '@/lib/types/database'
 import type { SlashCommand } from '@/lib/commands'
 import { CommandPalette } from './command-palette'
+import { MentionPalette, type AgentOption } from './mention-palette'
+
+const AGENTS: AgentOption[] = [
+  { key: 'coo', name: 'COO', role_title: 'Operations Director' },
+  { key: 'cso', name: 'CSO', role_title: 'Strategy Planner' },
+  { key: 'cto', name: 'CTO', role_title: 'Technical Lead' },
+  { key: 'risk_critic', name: 'Risk Critic', role_title: 'Adversarial Reviewer' },
+  { key: 'verifier', name: 'Verifier', role_title: 'Verification Lead' },
+  { key: 'documentation_manager', name: 'Documentation Manager', role_title: 'Documentation Manager' },
+  { key: 'builder', name: 'Builder', role_title: 'Implementation Lead' },
+  { key: 'brand_designer', name: 'Brand Designer', role_title: 'Brand Designer' },
+  { key: 'content_creator', name: 'Content Creator', role_title: 'Content Creator' },
+  { key: 'trend_scout', name: 'Trend Scout', role_title: 'Trend Scout' },
+]
 
 export function MessageInput({
   projectId,
@@ -23,18 +37,54 @@ export function MessageInput({
 }) {
   const router = useRouter()
   const [text, setText] = useState('')
-  const [loading, setLoading] = useState(false)
   const [showCommands, setShowCommands] = useState(false)
+  const [showMentions, setShowMentions] = useState(false)
+  const [mentionQuery, setMentionQuery] = useState('')
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
-  // Detect "/" at start of input
+  // Auto-resize textarea
+  useEffect(() => {
+    const el = textareaRef.current
+    if (el) {
+      el.style.height = 'auto'
+      el.style.height = `${el.scrollHeight}px`
+    }
+  }, [text])
+
+  // Detect "/" and "@" in input
   const handleChange = (value: string) => {
     setText(value)
+
+    // Slash commands: only at start of input
     if (value.startsWith('/') && value.length >= 1) {
       setShowCommands(true)
+      setShowMentions(false)
+      return
     } else {
       setShowCommands(false)
     }
+
+    // @ mentions: detect @word pattern anywhere
+    const atMatch = value.match(/@(\w*)$/)
+    if (atMatch) {
+      setShowMentions(true)
+      setMentionQuery(atMatch[1])
+    } else {
+      setShowMentions(false)
+      setMentionQuery('')
+    }
   }
+
+  const handleMentionSelect = useCallback(
+    (agent: AgentOption) => {
+      // Replace the @query with @key
+      const newText = text.replace(/@\w*$/, `@${agent.key} `)
+      setText(newText)
+      setShowMentions(false)
+      textareaRef.current?.focus()
+    },
+    [text],
+  )
 
   // Helper to show a local-only message (no API call, no polling)
   const showLocalMessage = useCallback(
@@ -97,6 +147,17 @@ export function MessageInput({
         return
       }
 
+      // Clear command — auto-submit
+      if (cmd.key === 'clear') {
+        setText('/clear')
+        setShowCommands(false)
+        setTimeout(() => {
+          const form = document.querySelector('form[data-message-form]') as HTMLFormElement | null
+          form?.requestSubmit()
+        }, 50)
+        return
+      }
+
       // Commands that execute immediately
       if (['all', 'status', 'summary', 'catchup', 'risk', 'deadline', 'portfolio'].includes(cmd.key)) {
         setText(`/${cmd.key}`)
@@ -118,7 +179,7 @@ export function MessageInput({
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault()
-      if (!text.trim() || loading) return
+      if (!text.trim()) return
 
       setShowCommands(false)
       const body = text.trim()
@@ -141,6 +202,18 @@ export function MessageInput({
           '- `/dm 에이전트` — 1:1 DM으로 이동\n\n' +
           '`/` 입력 시 전체 커맨드 목록을 확인할 수 있습니다.',
         )
+        return
+      }
+
+      if (body === '/clear') {
+        setText('')
+        // Archive current thread + create new one
+        fetch(`/api/threads/${threadId}/clear`, { method: 'POST' })
+          .then((r) => r.json())
+          .then(() => {
+            router.refresh()
+          })
+          .catch(() => showLocalMessage('⚠️ 대화 초기화 실패'))
         return
       }
 
@@ -172,7 +245,6 @@ export function MessageInput({
       }
 
       // All other messages (including /call, /all, regular chat) → send to API
-      setLoading(true)
       setText('')
 
       const optimisticMsg: Message = {
@@ -209,16 +281,15 @@ export function MessageInput({
           router.refresh()
         })
         .catch(() => console.error('메시지 전송 실패'))
-        .finally(() => setLoading(false))
     },
-    [text, loading, threadId, projectId, mode, agentKey, onOptimisticMessage, onLocalMessage, router, showLocalMessage],
+    [text, threadId, projectId, mode, agentKey, onOptimisticMessage, onLocalMessage, router, showLocalMessage],
   )
 
   return (
     <form
       data-message-form
       onSubmit={handleSubmit}
-      className="relative border-t border-zinc-200 p-4 dark:border-zinc-800"
+      className="relative border-t border-border p-4"
     >
       {/* Command palette popup */}
       {showCommands && (
@@ -231,21 +302,40 @@ export function MessageInput({
         </div>
       )}
 
+      {/* Mention palette popup */}
+      {showMentions && (
+        <div className="mx-auto max-w-[800px]">
+          <MentionPalette
+            query={mentionQuery}
+            agents={AGENTS}
+            onSelect={handleMentionSelect}
+            onClose={() => setShowMentions(false)}
+          />
+        </div>
+      )}
+
       <div className="mx-auto flex max-w-[800px] gap-2">
-        <input
-          type="text"
+        <textarea
+          ref={textareaRef}
           value={text}
           onChange={(e) => handleChange(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault()
+              const form = e.currentTarget.closest('form')
+              form?.requestSubmit()
+            }
+          }}
           placeholder={mode === 'meeting-room' ? '메시지 입력... ( / 로 커맨드 사용)' : 'DM 메시지... ( / 로 커맨드 사용)'}
-          className="flex-1 rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900"
-          disabled={loading}
+          rows={1}
+          className="max-h-32 min-h-[38px] flex-1 resize-none rounded-lg border border-border bg-surface px-3 py-2 text-sm text-foreground transition-colors focus:border-accent focus:outline-none"
         />
         <button
           type="submit"
-          disabled={loading || !text.trim()}
-          className="shrink-0 rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:opacity-50 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+          disabled={!text.trim()}
+          className="shrink-0 self-end rounded-lg bg-accent px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-accent-hover disabled:opacity-50"
         >
-          {loading ? '전송 중...' : '보내기'}
+          보내기
         </button>
       </div>
     </form>

@@ -25,12 +25,15 @@ export function MessageTimeline({
   const [optimisticMessages, setOptimisticMessages] = useState<Message[]>([])
   const [polledMessages, setPolledMessages] = useState<Message[]>([])
   const [isWaitingForAgent, setIsWaitingForAgent] = useState(false)
+  const [cleared, setCleared] = useState(false)
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   // Merge all message sources, dedup by id
   const allMessages = useMemo(() => {
     const map = new Map<number, Message>()
-    for (const m of serverMessages) map.set(m.id, m)
+    if (!cleared) {
+      for (const m of serverMessages) map.set(m.id, m)
+    }
     for (const m of polledMessages) map.set(m.id, m)
     // Optimistic messages have negative IDs — only show if not yet in server/polled
     const result = Array.from(map.values())
@@ -45,11 +48,17 @@ export function MessageTimeline({
     }
     result.sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())
     return result
-  }, [serverMessages, polledMessages, optimisticMessages])
+  }, [serverMessages, polledMessages, optimisticMessages, cleared])
 
-  // Auto-scroll on new messages
+  // Auto-scroll: instant on first load, smooth on new messages
+  const initialLoad = useRef(true)
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (initialLoad.current) {
+      bottomRef.current?.scrollIntoView({ behavior: 'instant' })
+      initialLoad.current = false
+    } else {
+      bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
   }, [allMessages.length])
 
   // Poll for new messages when waiting for agent response
@@ -129,10 +138,18 @@ export function MessageTimeline({
     setPolledMessages((prev) => [...prev, msg])
   }, [])
 
+  // Clear all messages from view (DB messages reappear on refresh)
+  const handleClear = useCallback(() => {
+    setOptimisticMessages([])
+    setPolledMessages([])
+    setIsWaitingForAgent(false)
+    setCleared(true)
+  }, [])
+
   if (allMessages.length === 0) {
     return (
       <div className="flex min-h-0 flex-1 flex-col">
-        <div className="flex flex-1 items-center justify-center text-sm text-zinc-400">
+        <div className="flex flex-1 items-center justify-center text-sm text-foreground-muted">
           아직 대화가 없습니다. 첫 메시지를 보내보세요.
         </div>
         <MessageInput
@@ -160,11 +177,11 @@ export function MessageTimeline({
           )}
           {isWaitingForAgent && (
             <div className="flex gap-3">
-              <div className="mt-1 h-8 w-8 shrink-0 rounded-lg bg-zinc-200 dark:bg-zinc-700" />
-              <div className="flex items-center gap-1 rounded-xl bg-zinc-100 px-4 py-3 dark:bg-zinc-800">
-                <span className="inline-block h-2 w-2 animate-bounce rounded-full bg-zinc-400 [animation-delay:0ms]" />
-                <span className="inline-block h-2 w-2 animate-bounce rounded-full bg-zinc-400 [animation-delay:150ms]" />
-                <span className="inline-block h-2 w-2 animate-bounce rounded-full bg-zinc-400 [animation-delay:300ms]" />
+              <div className="mt-1 h-8 w-8 shrink-0 rounded-lg bg-surface-active" />
+              <div className="flex items-center gap-1 rounded-xl bg-surface px-4 py-3">
+                <span className="inline-block h-2 w-2 animate-bounce rounded-full bg-foreground-muted [animation-delay:0ms]" />
+                <span className="inline-block h-2 w-2 animate-bounce rounded-full bg-foreground-muted [animation-delay:150ms]" />
+                <span className="inline-block h-2 w-2 animate-bounce rounded-full bg-foreground-muted [animation-delay:300ms]" />
               </div>
             </div>
           )}

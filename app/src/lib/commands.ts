@@ -176,6 +176,14 @@ export const SLASH_COMMANDS: SlashCommand[] = [
     available: false,
   },
   {
+    key: 'clear',
+    label: '/clear',
+    description: '대화창 초기화 (새로고침하면 복원)',
+    category: 'navigate',
+    usage: '/clear',
+    available: true,
+  },
+  {
     key: 'help',
     label: '/help',
     description: '사용 가능한 커맨드 목록',

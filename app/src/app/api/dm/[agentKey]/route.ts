@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createServerClient } from '@/lib/supabase/server'
-import { getProjectAgent } from '@/mastra/agents'
+import { getProjectAgent, selectModel } from '@/mastra/agents'
 import { loadProjectContext, formatProjectContext } from '@/mastra/context'
 import type { Message, Thread } from '@/lib/types/database'
 
@@ -52,7 +52,8 @@ export async function POST(
   try {
     const ctx = await loadProjectContext(project_id)
     const projectContext = formatProjectContext(ctx)
-    const { agent, instance } = await getProjectAgent(project_id, agentKey, projectContext)
+    const model = selectModel(body_md)
+    const { agent, instance } = await getProjectAgent(project_id, agentKey, projectContext, model)
 
     // Load recent messages for context
     const { data: recentMessages } = await supabase
@@ -76,7 +77,7 @@ ${contextMessages}
 ## CEO's Message
 ${body_md}`
 
-    const result = await agent.generate(prompt)
+    const result = await agent.generate(prompt, { maxSteps: 5 })
 
     // Save agent's response
     const { data: savedMessage } = await supabase
