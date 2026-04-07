@@ -90,6 +90,7 @@ export function formatProjectContext(ctx: ProjectContext): string {
 
   // Project overview
   sections.push(`## 프로젝트: ${ctx.project.name}
+- ID: ${ctx.project.id}
 - 상태: ${ctx.project.status}
 - 단계: ${ctx.project.phase}
 - 설명: ${ctx.project.description ?? '(없음)'}`)
