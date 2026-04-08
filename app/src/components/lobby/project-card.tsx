@@ -5,6 +5,7 @@ import Link from 'next/link'
 import type { Project } from '@/lib/types/database'
 import { ProjectContextMenu } from './project-context-menu'
 import { EditProjectDialog } from './edit-project-dialog'
+import { useUnread } from '@/lib/hooks/use-unread'
 
 const STATUS_LABELS: Record<string, string> = {
   active: '진행 중',
@@ -41,6 +42,8 @@ const STATUS_COLORS: Record<string, string> = {
 export function ProjectCard({ project }: { project: Project }) {
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null)
   const [showEdit, setShowEdit] = useState(false)
+  const { getProjectUnread } = useUnread()
+  const unreadCount = getProjectUnread(project.id)
 
   const lastOpened = project.last_opened_at
     ? new Date(project.last_opened_at).toLocaleDateString('ko-KR', {
@@ -88,9 +91,16 @@ export function ProjectCard({ project }: { project: Project }) {
             >
               {project.name}
             </h3>
-            <span className={`mt-0.5 shrink-0 text-[10px] font-medium ${STATUS_COLORS[project.status] ?? 'text-foreground-muted'}`}>
-              {STATUS_LABELS[project.status] ?? project.status}
-            </span>
+            <div className="flex items-center gap-2">
+              {unreadCount > 0 && (
+                <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1.5 text-[10px] font-bold text-background">
+                  {unreadCount > 99 ? '99+' : unreadCount}
+                </span>
+              )}
+              <span className={`mt-0.5 shrink-0 text-[10px] font-medium ${STATUS_COLORS[project.status] ?? 'text-foreground-muted'}`}>
+                {STATUS_LABELS[project.status] ?? project.status}
+              </span>
+            </div>
           </div>
 
           {/* Description */}

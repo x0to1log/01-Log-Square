@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { Thread, AgentInstance } from '@/lib/types/database'
+import { useUnread } from '@/lib/hooks/use-unread'
 
 const LAYER_ORDER = ['strategic_core', 'review_core', 'support_execution', 'specialist'] as const
 const LAYER_LABELS: Record<string, string> = {
@@ -12,7 +13,6 @@ const LAYER_LABELS: Record<string, string> = {
   specialist: 'Specialists',
 }
 
-// Map agent keys to their layer (from agent_templates design)
 const AGENT_LAYER: Record<string, string> = {
   coo: 'strategic_core',
   cso: 'strategic_core',
@@ -38,6 +38,7 @@ export function ThreadSidebar({
   agents: AgentInstance[]
 }) {
   const pathname = usePathname()
+  const { getThreadUnread } = useUnread()
   const agentMap = new Map(agents.map((a) => [a.id, a]))
 
   const threadsByLayer = new Map<string, { thread: Thread; agent: AgentInstance }[]>()
@@ -70,7 +71,7 @@ export function ThreadSidebar({
             label="The Meeting Room"
             sublabel="전체 회의"
             isActive={pathname === `/project/${projectId}`}
-            badge={meetingRoom.last_message_at ? undefined : 'empty'}
+            unreadCount={getThreadUnread(meetingRoom.id)}
           />
         </div>
       )}
@@ -92,6 +93,7 @@ export function ThreadSidebar({
                 sublabel={agent.role_title}
                 isActive={pathname === `/project/${projectId}/dm/${agent.key}`}
                 agentKey={agent.key}
+                unreadCount={getThreadUnread(thread.id)}
               />
             ))}
           </div>
@@ -106,15 +108,15 @@ function ThreadCell({
   label,
   sublabel,
   isActive,
-  badge,
   agentKey,
+  unreadCount,
 }: {
   href: string
   label: string
   sublabel: string
   isActive: boolean
-  badge?: string
   agentKey?: string
+  unreadCount?: number
 }) {
   return (
     <Link
@@ -138,7 +140,11 @@ function ThreadCell({
         <p className="truncate">{label}</p>
         <p className="truncate text-xs text-foreground-muted">{sublabel}</p>
       </div>
-      {badge && <span className="text-xs text-foreground-muted">{badge}</span>}
+      {unreadCount && unreadCount > 0 ? (
+        <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1.5 text-[10px] font-bold text-background">
+          {unreadCount > 99 ? '99+' : unreadCount}
+        </span>
+      ) : null}
     </Link>
   )
 }

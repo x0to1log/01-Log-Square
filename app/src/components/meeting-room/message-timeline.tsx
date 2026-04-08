@@ -61,6 +61,11 @@ export function MessageTimeline({
     }
   }, [allMessages.length])
 
+  // Mark thread as read on mount and when new messages arrive
+  useEffect(() => {
+    fetch(`/api/threads/${threadId}/read`, { method: 'POST' }).catch(() => {})
+  }, [threadId, allMessages.length])
+
   // Poll for new messages when waiting for agent response
   useEffect(() => {
     if (!isWaitingForAgent) return
