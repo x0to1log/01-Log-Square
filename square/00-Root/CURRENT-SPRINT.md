@@ -42,11 +42,15 @@ tags:
 
 ## Backlog
 
-- **에이전트 선제 대화 (Proactive Messages)** — 에이전트가 대표에게 먼저 대화를 거는 기능. 예: COO가 아침에 마감 임박 액션 알림, Risk Critic이 리스크 감지 시 선제 보고, Trend Scout이 관련 뉴스 브리핑. Vercel Cron 또는 Supabase Edge Function으로 주기적 트리거.
-- **에이전트 간 대화 (Inter-Agent Discussion)** — 에이전트들이 서로 의견을 주고받는 기능. 대표가 주제를 던지면 에이전트들이 멀티 라운드로 토론하고, 대표는 지켜보다가 원할 때 끼어드는 구조. Meeting Room API에서 응답 후 추가 라운드를 트리거하는 방식.
+- **에이전트 자동 작업 (Proactive Agent Tasks)** — 시간 기반(Cron) + 이벤트 기반(DB 트리거) 하이브리드. 결과는 Meeting Room에 메시지로 전달.
+  - 시간 기반: COO 일일 브리핑, CSO 주간 전략 리뷰, Trend Scout 뉴스 브리핑
+  - 이벤트 기반: 새 결정 등록 시 Risk Critic 자동 리스크 체크, 액션 마감 3일 전 COO 리마인드, 프로젝트 생성 시 COO 90일 로드맵 초안
+- **읽지 않은 메시지 표시 (Unread Badge)** — 에이전트가 보낸 메시지가 있으면 사이드바/로비에 배지 표시. 대표가 확인 안 한 메시지가 있다는 걸 알 수 있게.
+- ~~에이전트 간 대화 (Inter-Agent Discussion)~~ — ✅ 구현 완료 (2-3라운드 자동 토론)
 - 에이전트 대화 품질 개선 — 실제 대화 예시를 기반으로 페르소나 프롬프트 튜닝 (SOUL.md 패턴)
 - 픽셀 플로어맵 네비게이션
 - 슬래시 커맨드 확장 (/review, /compare, /vote, /focus, /recall 등)
+- 외부 알림 채널 연동 (텔레그램/슬랙) — 접속 안 해도 알림 수신
 
 ## Related
 
