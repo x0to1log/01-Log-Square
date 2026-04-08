@@ -285,28 +285,29 @@ export async function POST(req: Request) {
 
     console.log(`[Meeting Room] Round 1 ${mentionedKeys.length > 0 ? '(@mention)' : '(router)'}: ${selectedKeys.join(', ')}`)
 
-    const round1Prompt = `## 최근 대화
-${contextMessages}
-
-## 대표의 현재 메시지
-${body_md}
-
-위 내용에 대해 당신의 역할 관점에서 의견을 제시하세요.`
-
     const allSavedMessages: Message[] = []
     const round1Respondents: string[] = []
+
+    // Round 1: Sequential — each agent sees previous agents' responses
+    let runningContext = `## 최근 대화\n${contextMessages}\n\n## 대표의 현재 메시지\n${body_md}`
 
     for (const key of selectedKeys) {
       const ca = agentMap.get(key)
       if (!ca) continue
       try {
-        const result = await ca.agent.generate(round1Prompt, { maxSteps: 5 })
+        const prompt = selectedKeys.indexOf(key) === 0
+          ? `${runningContext}\n\n위 내용에 대해 당신의 역할 관점에서 의견을 제시하세요.`
+          : `${runningContext}\n\n위 대화와 다른 에이전트의 의견을 참고해서, 당신의 역할 관점에서 의견을 제시하세요. 이미 나온 내용을 반복하지 마세요.`
+
+        const result = await ca.agent.generate(prompt, { maxSteps: 5 })
         const saved = await saveAgentMessage(
           supabase, thread.owner_user_id, thread_id, ca.instance.id, result.text,
         )
         if (saved) {
           allSavedMessages.push(saved)
           round1Respondents.push(key)
+          // Add this agent's response to running context for next agent
+          runningContext += `\n\n[${ca.instance.name}]: ${result.text}`
         }
       } catch (err) {
         console.error(`[Meeting Room] Round 1 — ${key} failed:`, err)
